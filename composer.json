@@ -30,6 +30,7 @@
         }
     },
     "extra": {
-        "phpactor.extension_class": "Phpactor\\Extension\\Console\\ConsoleExtension"
+        "phpactor.extension_class": "Phpactor\\Extension\\Console\\ConsoleExtension",
+        "branch-alias": "0.x-dev"
     }
 }
