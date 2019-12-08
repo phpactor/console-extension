@@ -4,6 +4,7 @@ namespace Phpactor\Extension\Console\Tests\Unit;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use Phpactor\Container\Container;
 use Phpactor\Container\PhpactorContainer;
 use Phpactor\Extension\Console\ConsoleExtension;
 use Phpactor\Extension\Console\Tests\Unit\Example\InvalidExtension;
@@ -14,7 +15,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ConsoleExtensionTest extends TestCase
 {
-    public function testCreatesCommandLoader()
+    public function testCreatesCommandLoader(): void
     {
         $container = $this->createContainer();
 
@@ -24,7 +25,7 @@ class ConsoleExtensionTest extends TestCase
         $this->assertInstanceOf(Command::class, $command);
     }
 
-    public function testCreatesInputAndOutput()
+    public function testCreatesInputAndOutput(): void
     {
         $input = $this->createContainer()->get(ConsoleExtension::SERVICE_INPUT);
         $output = $this->createContainer()->get(ConsoleExtension::SERVICE_OUTPUT);
@@ -33,7 +34,7 @@ class ConsoleExtensionTest extends TestCase
         $this->assertInstanceOf(ConsoleOutput::class, $output);
     }
 
-    public function testThrowsExceptionIfNoNameAttributeProvided()
+    public function testThrowsExceptionIfNoNameAttributeProvided(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('must have the "name" attribute');
@@ -45,12 +46,13 @@ class ConsoleExtensionTest extends TestCase
         $loader = $container->get(ConsoleExtension::SERVICE_COMMAND_LOADER);
     }
 
-    private function createContainer(): PhpactorContainer
+    private function createContainer(): Container
     {
         $container = PhpactorContainer::fromExtensions([
             ConsoleExtension::class,
             TestExtension::class
         ]);
+
         return $container;
     }
 }
