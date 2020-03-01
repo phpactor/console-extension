@@ -2,6 +2,7 @@ parameters:
     level: 7
     inferPrivatePropertyTypeFromConstructor: true
     ignoreErrors:
+        - /has parameter \$name/
         
     paths:
         - lib
