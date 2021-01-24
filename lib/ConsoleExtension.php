@@ -21,7 +21,7 @@ class ConsoleExtension implements Extension
     /**
      * {@inheritDoc}
      */
-    public function load(ContainerBuilder $container)
+    public function load(ContainerBuilder $container): void
     {
         $container->register(self::SERVICE_COMMAND_LOADER, function (Container $container) {
             $map = [];
@@ -54,7 +54,7 @@ class ConsoleExtension implements Extension
     /**
      * {@inheritDoc}
      */
-    public function configure(Resolver $schema)
+    public function configure(Resolver $schema): void
     {
         $schema->setDefaults([
             'console.verbosity' => OutputInterface::VERBOSITY_NORMAL,
